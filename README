@@ -1,0 +1,17 @@
+http-runner listens to http requests.
+if it contains a dollar ("$") char, http-runner greps its config file for "_"+the word after "$".
+if found, it asks (via Xdialog) if the alias should be run, and if yes, it runs the command specified 
+in the config.
+if not found, it greps for the word without "_", if found IT DOES NOT ASK, but run it.
+if that was also not found, it asks for permission to execute the query directly as a bash command 
+line.
+
+the query without the first word (which is used as alias) is defined in $HTTP_RUNNER_REQUEST_ARGS.
+
+config syntax: [_]alias bash command line
+WARNING: if you specify "_test1", and user calls $test1, you get asked, but if he calls $_test1, you 
+don't! so, always also specify a "__test1" with e.g. "echo forbidden", so it gets called if user 
+requests $_test1 and $__test1.
+
+url syntax: http://example.invalid/[any/path/]$[command line]
+currently supported url encoded chars: space( ) and doublequotes(")
