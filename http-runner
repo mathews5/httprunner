@@ -1,0 +1,16 @@
+# This is the configuration for the tcp/stream echo service.
+
+service http-runner
+{
+	type		= UNLISTED
+	wait		= no
+	socket_type	= stream
+        user		= mz
+	protocol	= tcp
+	port		= 82
+	bind		= 127.0.0.1
+	only_from	= 127.0.0.1 localhost
+	server		= /bin/bash
+	server_args	= /usr/local/bin/http-runner.sh
+}
+
