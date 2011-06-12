@@ -1,0 +1,73 @@
+<?xml version="1.0"?>
+
+<!DOCTYPE overlay SYSTEM "chrome://webrunner/locale/webrunner.dtd">
+
+<overlay xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul"
+        id="menuHide-overlay">
+
+  <script type="application/x-javascript" src="chrome://webrunner/content/namespace.js"/>
+  <script type="application/x-javascript" src="chrome://webrunner/content/baseMenuOverlay.js"/>
+
+  <menubar id="main-menubar" webrunner="true" />
+
+  <menuitem id="aboutName" oncommand="WebRunner.openAboutAppDialog();"/>
+
+  <menu id="menu_newNavigator" hidden="true"/>
+  <menu id="menu_newNavigatorTab" hidden="true"/>
+  <menu id="menu_openFile" hidden="true"/>
+  <menu id="menu_closeWindow" hidden="true"/>
+  <menu id="menu_close" hidden="true"/>
+  <menu id="menu_import" hidden="true"/>
+
+  <menu id="history-menu" hidden="true"/>
+  <menu id="bookmarksMenu" hidden="true"/>
+
+  <menu id="viewToolbarsMenu" hidden="true"/>
+  <menuitem id="toggle_taskbar" hidden="true"/>
+  <menu id="viewSidebarMenuMenu" hidden="true"/>
+  <menu id="menu_convertToApplication" hidden="true"/>
+
+  <menu id="menu_search" hidden="true"/>
+
+  <script type="text/javascript">
+    <![CDATA[
+      <!-- Hide any separators that are not needed after the overlay is applied. -->
+      function hideStraySeparators()
+      {
+        var menubar = document.getElementById("main-menubar");
+        for (var i=0; i<menubar.childNodes.length; i++) {
+          var topmenu = menubar.childNodes[i];
+          var popup = topmenu.firstChild;
+          var foundSeparator = false;
+          var foundItem = false;
+          for (var j=0; j<popup.childNodes.length; j++) {
+            var item = popup.childNodes[j];
+            if (item.tagName == "menuseparator") {
+              if (foundSeparator || !foundItem) {
+                item.hidden = true;
+              }
+              foundSeparator = true;
+            }
+            else if (!item.hidden) {
+              foundSeparator = false;
+              foundItem = true;
+            }
+          }
+        }
+      }
+
+      <!-- Show hidden menu items with the "webrunner" attribute since we are running as web app. -->
+      function showWebRunnerMenuItems()
+      {
+        var items = document.querySelectorAll("menuitem[webrunner='true']");
+        for (i=0; i<items.length; i++) {
+          items[i].hidden = false;
+        }
+      }
+
+      window.addEventListener("load", hideStraySeparators, false);
+      window.addEventListener("load", showWebRunnerMenuItems, false);
+    ]]>
+  </script>
+
+</overlay>

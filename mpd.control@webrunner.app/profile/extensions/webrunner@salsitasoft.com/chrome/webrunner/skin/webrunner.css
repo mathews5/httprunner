@@ -1,0 +1,12 @@
+@import  url(chrome://global/skin/);
+
+/* Special style for hiding chrome, see webrunner.js for details */
+window[webrunner-chromehidden~="menubar"] .chromeclass-menubar,
+window[webrunner-chromehidden~="directories"] .chromeclass-directories,
+window[webrunner-chromehidden~="status"] .chromeclass-status,
+window[webrunner-chromehidden~="extrachrome"] .chromeclass-extrachrome,
+window[webrunner-chromehidden~="location"] .chromeclass-location,
+window[webrunner-chromehidden~="location"][webrunner-chromehidden~="toolbar"] .chromeclass-toolbar,
+window[webrunner-chromehidden~="toolbar"] .chromeclass-toolbar-additional {
+  display: none;
+}

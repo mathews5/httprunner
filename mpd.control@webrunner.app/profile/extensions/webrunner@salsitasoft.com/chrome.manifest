@@ -1,0 +1,21 @@
+component {54683c67-7e7c-444e-a9f7-bb47fe42d828} components/nsAppStartup.js
+override chrome://branding/locale/brand.dtd resource://appbundle/branding/brand.dtd
+resource webrunner .
+contract @mozilla.org/platform-web-api;1 {d3a004e0-0532-4b0d-b7be-8ed90eab675f}
+locale  webrunner en-US chrome/webrunner/locale/en-US/
+override chrome://branding/locale/brand.properties resource://appbundle/branding/brand.properties
+component {8fd0bfd1-4d85-4167-804f-0911cb3224dc} components/nsCommandLineHandler.js
+contract @mozilla.org/commandlinehandler/general-startup;1?type=webrunner {8fd0bfd1-4d85-4167-804f-0911cb3224dc}
+category command-line-handler m-webrunner @mozilla.org/commandlinehandler/general-startup;1?type=webrunner
+category profile-after-change webrunner-app-startup @mozilla.org/webrunner-app-startup;1
+category JavaScript-global-property webrunner @mozilla.org/platform-web-api;1
+manifest components/components.manifest
+content webrunner chrome/webrunner/content/ xpcnativewrappers=no
+component {d3a004e0-0532-4b0d-b7be-8ed90eab675f} components/nsPlatformGlue.js
+overlay chrome://browser/content/hiddenWindow.xul resource://menures/baseMenuOverlay.xul
+skin    webrunner classic/1.0 chrome/webrunner/skin/
+contract @mozilla.org/webrunner-app-startup;1 {54683c67-7e7c-444e-a9f7-bb47fe42d828}
+overlay chrome://browser/content/browser.xul resource://menures/baseMenuOverlay.xul
+overlay chrome://browser/content/browser.xul chrome://webrunner/content/webrunner.xul
+overlay chrome://browser/content/preferences/preferences.xul chrome://webrunner/content/preferences.xul
+manifest components/interfaces.manifest

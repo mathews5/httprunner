@@ -1,0 +1,18 @@
+Generated File. Do not edit.
+
+[HEADER]
+Version:0.15:$
+Arch:x86-gcc3:$
+
+[PLUGINS]
+libflashplayer.so:$
+/opt/Adobe/flash-player32/plugin/libflashplayer.so:$
+:$
+1307458054000:1:1:$
+Shockwave Flash 10.3 r181:$
+Shockwave Flash:$
+2
+0:application/x-shockwave-flash:Shockwave Flash:swf:$
+1:application/futuresplash:FutureSplash Player:spl:$
+
+[INVALID]
