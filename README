@@ -18,7 +18,7 @@ currently supported url encoded chars: space( ) and doublequotes(")
 
 
 UPDATE: a magic cookie can be set by calling "$cake=<the-magic-cookie>", which has to be allowed in the dialog,
-and will autoallow all later commands which have this cookie set.
+and will autoallow all later alias commands (not shell commands) which have this cookie set.
 
 
 oh, btw: I use this routed through fefe's gatling httpd, which works great for such tasks. (just -O 

@@ -40,7 +40,8 @@ elif grep -q "^$(echo $run | cut -d" " -f 1) " /etc/http-runner.conf
   [ "_$COOKIERUN" = "_yes" ] && { bash -c "$r" ; exit ; }
   bash -c "$r"
 else
-  [ "_$COOKIERUN" = "_yes" ] && { bash -c "$run" ; exit ; }
+  # we DO NOT WANT to allow every command!
+  # [ "_$COOKIERUN" = "_yes" ] && { bash -c "$run" ; exit ; }
   DISPLAY=:0.0 Xdialog --yesno "Really run command '$run'?" 10 100 && bash -c "$run" || echo "denied"
 fi
 echo
