@@ -15,3 +15,8 @@ requests $_test1 and $__test1.
 
 url syntax: http://example.invalid/[any/path/]$[command line]
 currently supported url encoded chars: space( ) and doublequotes(")
+
+
+
+oh, btw: I use this routed through fefe's gatling httpd, which works great for such tasks. (just -O 
+'127.0.0.1/82/HTTP-RUN')
